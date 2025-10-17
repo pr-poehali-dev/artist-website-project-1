@@ -71,19 +71,19 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-body">
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
-        <div className="container mx-auto px-4 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/40">
+        <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <h1 className="text-xl font-heading font-light tracking-wide">
               АРТИСТ
             </h1>
-            <div className="hidden md:flex gap-6">
+            <div className="hidden md:flex gap-8">
               {["home", "bio", "portfolio", "video", "events", "contact"].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`font-heading uppercase text-sm tracking-wider transition-colors hover:text-primary ${
-                    activeSection === section ? "text-primary" : "text-muted-foreground"
+                  className={`font-body text-sm transition-colors ${
+                    activeSection === section ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {section === "home" && "Главная"}
@@ -95,75 +95,67 @@ const Index = () => {
                 </button>
               ))}
             </div>
-            <Button variant="outline" size="icon" className="md:hidden">
+            <Button variant="ghost" size="icon" className="md:hidden">
               <Icon name="Menu" size={20} />
             </Button>
           </div>
         </div>
       </nav>
 
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20 animate-pulse"></div>
-        <div className="container mx-auto px-4 z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-slide-in-left">
-              <Badge className="bg-primary/20 text-primary border-primary">Современное искусство</Badge>
-              <h1 className="text-6xl md:text-8xl font-heading font-black leading-tight">
-                ТВОРЧЕСТВО
-                <span className="block text-primary">БЕЗ ГРАНИЦ</span>
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-lg">
-                Исследую пространство между реальностью и воображением через современное искусство
-              </p>
-              <div className="flex gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 font-heading">
-                  <Icon name="Calendar" size={20} className="mr-2" />
+      <section id="home" className="min-h-screen flex items-center justify-center pt-20">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h1 className="text-5xl md:text-7xl font-heading font-light leading-tight tracking-tight">
+                  Творчество
+                  <span className="block font-normal">без границ</span>
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+                  Исследую пространство между реальностью и воображением через современное искусство
+                </p>
+              </div>
+              <div className="flex gap-3">
+                <Button variant="outline" className="font-body">
                   События
                 </Button>
-                <Button size="lg" variant="outline" className="font-heading">
-                  <Icon name="Play" size={20} className="mr-2" />
-                  Смотреть
+                <Button variant="ghost" className="font-body">
+                  Смотреть →
                 </Button>
               </div>
             </div>
-            <div className="relative animate-scale-in">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary to-accent rounded-3xl blur-3xl opacity-30 animate-float"></div>
+            <div className="relative">
               <img
                 src="https://cdn.poehali.dev/projects/e45a1b73-a533-49ac-8137-1b316f2f7c78/files/31eca998-be6b-4fd1-b57d-b6b0b5a258a9.jpg"
                 alt="Artist"
-                className="relative rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                className="w-full aspect-square object-cover"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="bio" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section id="bio" className="py-32 border-t border-border/40">
+        <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl font-heading font-black mb-12 text-center">
-              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                БИОГРАФИЯ
-              </span>
+            <h2 className="text-3xl font-heading font-light mb-16">
+              Биография
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 bg-card/50 backdrop-blur border-border hover:border-primary transition-colors group">
-                <Icon name="Award" size={40} className="text-accent mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-2xl font-heading font-bold mb-2">20+ лет</h3>
-                <p className="text-muted-foreground">Опыта в современном искусстве</p>
-              </Card>
-              <Card className="p-6 bg-card/50 backdrop-blur border-border hover:border-secondary transition-colors group">
-                <Icon name="Users" size={40} className="text-secondary mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-2xl font-heading font-bold mb-2">50+ выставок</h3>
-                <p className="text-muted-foreground">По всему миру</p>
-              </Card>
-              <Card className="p-6 bg-card/50 backdrop-blur border-border hover:border-accent transition-colors group">
-                <Icon name="Trophy" size={40} className="text-primary mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-2xl font-heading font-bold mb-2">15 наград</h3>
-                <p className="text-muted-foreground">Международных премий</p>
-              </Card>
+            <div className="grid md:grid-cols-3 gap-12 mb-16">
+              <div className="space-y-2">
+                <h3 className="text-4xl font-heading font-light">20+</h3>
+                <p className="text-muted-foreground text-sm">лет опыта в современном искусстве</p>
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-4xl font-heading font-light">50+</h3>
+                <p className="text-muted-foreground text-sm">выставок по всему миру</p>
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-4xl font-heading font-light">15</h3>
+                <p className="text-muted-foreground text-sm">международных премий</p>
+              </div>
             </div>
-            <div className="mt-12 space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <div className="space-y-6 text-base leading-loose text-muted-foreground max-w-2xl">
               <p>
                 Современный художник, работающий на стыке живописи, перформанса и инсталляции. 
                 Мои работы исследуют границы восприятия и трансформацию пространства.
@@ -177,194 +169,141 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="portfolio" className="py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="text-5xl font-heading font-black mb-12 text-center">
-            <span className="bg-gradient-to-r from-accent via-primary to-secondary bg-clip-text text-transparent">
-              ПОРТФОЛИО
-            </span>
+      <section id="portfolio" className="py-32 border-t border-border/40">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-heading font-light mb-16">
+            Портфолио
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {portfolio.map((work, index) => (
-              <Card 
-                key={work.id} 
-                className="group overflow-hidden bg-card border-border hover:border-primary transition-all duration-500 cursor-pointer"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative overflow-hidden aspect-square">
-                  <img
-                    src={work.image}
-                    alt={work.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <Badge className="mb-2 bg-accent/20 text-accent border-accent">{work.category}</Badge>
-                      <h3 className="text-xl font-heading font-bold">{work.title}</h3>
-                    </div>
-                  </div>
+          <div className="grid md:grid-cols-3 gap-1">
+            {portfolio.map((work) => (
+              <div key={work.id} className="group relative aspect-square overflow-hidden cursor-pointer">
+                <img
+                  src={work.image}
+                  alt={work.title}
+                  className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80"
+                />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="text-xs text-muted-foreground mb-1">{work.category}</p>
+                  <h3 className="text-lg font-heading font-light">{work.title}</h3>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="video" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-5xl font-heading font-black mb-12 text-center">
-            <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-clip-text text-transparent">
-              ВИДЕО
-            </span>
+      <section id="video" className="py-32 border-t border-border/40">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-heading font-light mb-16">
+            Видео
           </h2>
-          <div className="max-w-4xl mx-auto">
-            <Card className="overflow-hidden bg-card border-border">
-              <div className="aspect-video bg-muted flex items-center justify-center relative group cursor-pointer">
-                <img
-                  src="https://cdn.poehali.dev/projects/e45a1b73-a533-49ac-8137-1b316f2f7c78/files/05bc765f-52f6-4542-8ff6-017ec10dc264.jpg"
-                  alt="Video"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/70 transition-colors">
-                  <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Icon name="Play" size={32} className="ml-1" />
-                  </div>
+          <div className="max-w-5xl mx-auto">
+            <div className="aspect-video bg-muted relative group cursor-pointer overflow-hidden">
+              <img
+                src="https://cdn.poehali.dev/projects/e45a1b73-a533-49ac-8137-1b316f2f7c78/files/05bc765f-52f6-4542-8ff6-017ec10dc264.jpg"
+                alt="Video"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+                <div className="w-16 h-16 border border-white/80 rounded-full flex items-center justify-center">
+                  <Icon name="Play" size={20} className="ml-0.5" />
                 </div>
               </div>
-            </Card>
-            <div className="grid md:grid-cols-3 gap-4 mt-6">
+            </div>
+            <div className="grid md:grid-cols-3 gap-1 mt-1">
               {[1, 2, 3].map((i) => (
-                <Card key={i} className="overflow-hidden bg-card border-border cursor-pointer group">
-                  <div className="aspect-video bg-muted flex items-center justify-center">
-                    <Icon name="Play" size={24} className="text-primary group-hover:scale-125 transition-transform" />
+                <div key={i} className="aspect-video bg-muted cursor-pointer group relative overflow-hidden">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Icon name="Play" size={16} className="opacity-60 group-hover:opacity-100 transition-opacity" />
                   </div>
-                </Card>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section id="events" className="py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="text-5xl font-heading font-black mb-12 text-center">
-            <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-              ПРЕДСТОЯЩИЕ СОБЫТИЯ
-            </span>
+      <section id="events" className="py-32 border-t border-border/40">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-heading font-light mb-16">
+            Предстоящие события
           </h2>
-          <div className="max-w-4xl mx-auto space-y-6">
-            {events.map((event, index) => (
-              <Card 
+          <div className="max-w-4xl mx-auto space-y-1">
+            {events.map((event) => (
+              <div 
                 key={event.id} 
-                className="p-6 bg-card/50 backdrop-blur border-border hover:border-primary transition-all duration-300 group cursor-pointer"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="py-8 border-b border-border/40 last:border-0 group cursor-pointer hover:bg-muted/20 transition-colors px-4"
               >
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-primary/10 p-3 rounded-xl group-hover:bg-primary/20 transition-colors">
-                        <Icon name="Calendar" size={24} className="text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
-                          {event.title}
-                        </h3>
-                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                          <div className="flex items-center gap-2">
-                            <Icon name="MapPin" size={16} />
-                            {event.location}
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Icon name="Clock" size={16} />
-                            {event.time}
-                          </div>
-                        </div>
-                      </div>
+                    <h3 className="text-xl font-heading font-light mb-3">
+                      {event.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+                      <span>{event.location}</span>
+                      <span>{event.time}</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <Badge className="bg-accent/20 text-accent border-accent">
-                      {new Date(event.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })}
-                    </Badge>
-                    <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <Icon name="ArrowRight" size={16} />
-                    </Button>
+                  <div className="text-sm text-muted-foreground">
+                    {new Date(event.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </div>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-5xl font-heading font-black mb-12 text-center">
-            <span className="bg-gradient-to-r from-accent via-secondary to-primary bg-clip-text text-transparent">
-              КОНТАКТЫ
-            </span>
+      <section id="contact" className="py-32 border-t border-border/40">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-heading font-light mb-16">
+            Контакты
           </h2>
-          <div className="max-w-2xl mx-auto">
-            <Card className="p-8 bg-card/50 backdrop-blur border-border">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="bg-primary/10 p-3 rounded-xl">
-                      <Icon name="Mail" size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-heading font-semibold">artist@example.com</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="bg-secondary/10 p-3 rounded-xl">
-                      <Icon name="Phone" size={24} className="text-secondary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Телефон</p>
-                      <p className="font-heading font-semibold">+7 (999) 123-45-67</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="bg-accent/10 p-3 rounded-xl">
-                      <Icon name="MapPin" size={24} className="text-accent" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Студия</p>
-                      <p className="font-heading font-semibold">Москва, Россия</p>
-                    </div>
-                  </div>
+          <div className="max-w-3xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-16">
+              <div className="space-y-8">
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">Email</p>
+                  <p className="font-body">artist@example.com</p>
                 </div>
-                <div className="space-y-6">
-                  <h3 className="text-xl font-heading font-bold">Социальные сети</h3>
-                  <div className="flex gap-4">
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">Телефон</p>
+                  <p className="font-body">+7 (999) 123-45-67</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">Студия</p>
+                  <p className="font-body">Москва, Россия</p>
+                </div>
+              </div>
+              <div className="space-y-8">
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground mb-3">Социальные сети</p>
+                  <div className="flex gap-3">
                     {["Instagram", "Facebook", "Youtube", "Twitter"].map((social) => (
                       <Button
                         key={social}
-                        variant="outline"
-                        size="icon"
-                        className="hover:bg-primary hover:text-primary-foreground transition-colors"
+                        variant="ghost"
+                        size="sm"
+                        className="text-xs"
                       >
-                        <Icon name={social as any} size={20} />
+                        {social}
                       </Button>
                     ))}
                   </div>
-                  <Button className="w-full bg-primary hover:bg-primary/90 font-heading">
-                    <Icon name="Send" size={20} className="mr-2" />
-                    Написать сообщение
-                  </Button>
                 </div>
+                <Button variant="outline" className="font-body">
+                  Написать сообщение
+                </Button>
               </div>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
 
-      <footer className="py-12 border-t border-border">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground font-body">
-            © 2025 Артист. Все права защищены.
+      <footer className="py-16 border-t border-border/40">
+        <div className="container mx-auto px-6">
+          <p className="text-xs text-muted-foreground">
+            © 2025 Артист
           </p>
         </div>
       </footer>
